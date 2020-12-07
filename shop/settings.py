@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'payment',
     'coupons',
     'rosetta',
+    'localflavor',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,17 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # django-paypal settings
 PAYPAL_RECEIVER_EMAIL = 'cambefort.alex@gmail.com'
 PAYPAL_TEST = True
+
+#redis settings
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
